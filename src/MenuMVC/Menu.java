@@ -206,7 +206,7 @@ public class Menu extends javax.swing.JFrame {
     
     private void rmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmiActionPerformed
        // actionPerformed(evt);
-        PersonModel model;
+        PersonModel model = null;
         if (javax.swing.JOptionPane.showConfirmDialog(this,
                 "Do you want to start RMI as Server",
                 "RMI: Server Confirmation",
@@ -225,8 +225,12 @@ public class Menu extends javax.swing.JFrame {
         //Untuk memanggil Client dari RMI
         } else {
             String serverAddress = inputServerAddress();
-            //Memulai Client RMI
-            model = new PersonModel("rmiclient", serverAddress);
+            try {
+                //Memulai Client RMI
+                model = new PersonModel("rmiclient", serverAddress);
+            } catch (NotBoundException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
         //Inisiasi dari controller Person
