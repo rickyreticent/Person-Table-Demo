@@ -8,6 +8,7 @@ package TableMVC;
 import components.Person;
 import components.PersonDAO;
 import components.PersonDAOFactory;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,7 +30,7 @@ public class PersonModel extends java.util.Observable implements ControllerInter
        this.model = new PersonTableModel(personDao);
     }
     
-    public PersonModel(String mdl, String serverAddress){
+    public PersonModel(String mdl, String serverAddress) throws NotBoundException{
        this.personDao = PersonDAOFactory.getDAO(mdl, serverAddress);
        this.model = new PersonTableModel(personDao);
     }

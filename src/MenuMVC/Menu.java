@@ -272,6 +272,7 @@ public class Menu extends javax.swing.JFrame {
             model = new PersonModel(evt.getActionCommand());
 
         }
+        
         //Inisiasi dari controller Person
         PersonController controller = new PersonController();
         view = new PersonTableViewPanel();
